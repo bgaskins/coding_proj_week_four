@@ -257,6 +257,49 @@ console.log(willBuyDrink(isHotOut, money));
 //------------------------------------------------
 //------------------------------------------------
 
-
-
 // Create a function of your own that solves a problem. In comments, write what the function does and why you created it.
+
+/* A lemonade stand needs to refresh its stock of 2 lemonade coolers everyday at noon. On hot days they need to add a third cooler.
+to keep up with demand. Write a function that refills the lemonade at noon and makes an extra cooler on a hot day. Show the cooler count,
+so inventory is always kept*/
+
+let isHot = true; //Is it hot out? If so, an extra cooler is made
+let isNoon = true; //At noon the coolers will need to be refilled
+let coolerCount = 0; 
+
+function makeLemonade (isHot, isNoon, coolerCount) {
+    //If it is noon, the cooler count will be at zero and 2 coolers will be added to the count
+    if (isNoon) {
+        //At noon, the cooler count restarts at 2
+        if (coolerCount === 0) {
+            coolerCount = 2 
+            console.log(`Two fresh coolers made for noon. ${coolerCount} cooler(s) available`);
+        //If there are 3 or more coolers, no cooler will be made 
+        if (coolerCount >= 3) {
+            console.log(`No need for a new cooler. ${coolerCount} cooler(s) already available`);
+        }
+    //If it is hot AND noon, the cooler count will set to 3, adding an extra cooler 
+        if (isHot) {
+            if (coolerCount === 0) {
+                coolerCount = 3;
+                console.log(`Fresh coolers + 1 extra made. ${coolerCount} cooler(s) available`);
+            } 
+    } 
+    //If it is not noon, there is no need for new coolers
+       } else {
+        //If it isn't noon or hot outside, there is no need for a refill of coolers
+        console.log(`Not time for new coolers. ${coolerCount} cooler(s) already available`);
+
+       }
+
+       return coolerCount;
+
+    } else {
+        //If it isn't noon or hot. no coolers are needed
+        console.log("No coolers needed.");
+    }
+}
+coolerCount = makeLemonade(isHot, isNoon, 0);
+//Print the cooler count
+console.log(`The cooler count is: ${coolerCount}`);
+
